@@ -3,7 +3,6 @@ package com.example.pocwebview
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.RequiresApi
@@ -23,17 +22,19 @@ class MainActivity : AppCompatActivity() {
 //        webViewSetup();
 
         val myWebView: WebView = findViewById(R.id.webviewScreen);
-        myWebView.webViewClient = WebViewClient();
+//        myWebView.webViewClient = WebViewClient();
         myWebView.settings.javaScriptEnabled = true;
+        myWebView.settings.allowFileAccess = true;
+
 //        myWebView.settings.setSupportZoom(true);
 //        myWebView.settings.safeBrowsingEnabled = true;
-//        myWebView.loadUrl("https://www.google.com.br/");
-        val unencodedHtml =
-            "&lt;html&gt;&lt;body&gt;'%23' is the percent code for ‘#‘ &lt;/body&gt;&lt;/html&gt;"
-        val summary = "<html><body>You scored <b>192</b> points.</body></html>"
-        val encodedHtml = Base64.encodeToString(unencodedHtml.toByteArray(), Base64.NO_PADDING)
+        myWebView.loadUrl("https://www.hackingwithswift.com/");
+//        val unencodedHtml =
+//            "&lt;html&gt;&lt;body&gt;'%23' is the percent code for ‘#‘ &lt;/body&gt;&lt;/html&gt;"
+//        val summary = "<html><body>You scored <b>192</b> points.</body></html>"
+//        val encodedHtml = Base64.encodeToString(unencodedHtml.toByteArray(), Base64.NO_PADDING)
 //        myWebView.loadData(encodedHtml, "text/html", "base64")
-        myWebView.loadData(summary, "text/html", null);
+//        myWebView.loadData(summary, "text/html", null);
 //        myWebView.loadUrl("file:///android_asset/index.html");
 
         todoAdapter = TodoAdapter(mutableListOf());
